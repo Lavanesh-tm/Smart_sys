@@ -1,0 +1,12 @@
+.gradle/
+**/build/
+**/local.properties
+*.iml
+.idea/
+.DS_Store
+**/*.tflite.bak
+C:/tmp/saivenv/
+*.log
+.kotlin/
+__pycache__/
+*.pyc

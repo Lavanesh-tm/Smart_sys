@@ -1,0 +1,44 @@
+SmartAmbientAI — Group 25
+=========================
+
+What was added
+--------------
+1) dataset/synthetic/ — 500 synthetic WAV clips (5 classes × 100) + dataset.csv. Replace with your campus recordings using the same CSV columns when ready.
+2) training/ — generate_synthetic_dataset.py, train_and_export_tflite.py (TF log-mel front-end + sensor MLP), config.py.
+3) SmartAmbientAI/ — Android Studio app: mic 3 s @ 16 kHz, accelerometer + light, TensorFlow Lite inference, on-screen notification suggestions, Field data logger screen.
+
+Field data logger (on phone)
+----------------------------
+  Main screen → "Field data logger". Pick label → "Record 3s & append to CSV".
+  Files go to app external storage:
+    Android/data/com.group25.smartambientai/files/SmartAmbientField/
+      dataset.csv
+      audio/*.wav
+  Copy the whole SmartAmbientField folder to your PC. Train with:
+    python train_and_export_tflite.py --data path/to/SmartAmbientField/dataset.csv --out ...
+  Paths in CSV are like audio/foo.wav; the trainer resolves them relative to the CSV folder.
+
+Regenerate synthetic data
+-------------------------
+  cd training
+  python generate_synthetic_dataset.py --out ../dataset/synthetic --n 100
+
+Train & refresh the bundled model
+---------------------------------
+  (TensorFlow on Windows may need a short path venv, e.g. C:\tmp\saivenv)
+  pip install tensorflow pandas scikit-learn
+  python train_and_export_tflite.py --data ../dataset/synthetic/dataset.csv --out ../SmartAmbientAI/app/src/main/assets/smart_ambient_model.tflite --epochs 60
+
+Post-training int8 (optional, for the report)
+---------------------------------------------
+  Add flag: --full-int8
+  Then update the Kotlin helper to feed uint8 tensors using TFLite quantization parameters.
+
+Open the Android project
+------------------------
+  File → Open → select folder: SmartAmbientAI
+  Let Gradle sync (downloads wrapper if needed). Run on a physical phone for real sensors.
+
+Honesty for write-ups
+---------------------
+Synthetic data is programmatically generated here (not recorded on campus). State that clearly; use the same pipeline for real labeled data later. High accuracy on synthetic data does not imply real-world performance.

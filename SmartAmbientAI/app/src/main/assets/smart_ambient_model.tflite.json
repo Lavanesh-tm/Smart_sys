@@ -1,0 +1,29 @@
+{
+  "classes": [
+    "library",
+    "street",
+    "gym",
+    "home",
+    "meeting"
+  ],
+  "inputs": {
+    "audio_pcm": {
+      "shape": [
+        1,
+        48000
+      ],
+      "dtype": "float32"
+    },
+    "sensor_stats": {
+      "shape": [
+        1,
+        10
+      ],
+      "dtype": "float32"
+    }
+  },
+  "quantization": "float32_weights",
+  "val_accuracy": 1.0,
+  "sample_rate_hz": 16000,
+  "window_samples": 48000
+}

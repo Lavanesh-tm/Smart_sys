@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Smart Ambient AI</string>
+    <string name="capture">Capture 3s &amp; classify</string>
+    <string name="status_idle">Mic + accel + light: ready. Grant mic permission when prompted.</string>
+    <string name="capturing">Recording sensors for 3 seconds…</string>
+
+    <string name="field_logger_nav">Field data logger</string>
+    <string name="field_log_title">Field data logger</string>
+    <string name="field_log_help">Choose the true environment, then record 3 seconds. Each clip is saved as a WAV under audio/ and one line is appended to dataset.csv (same columns as the training CSV). Copy the whole SmartAmbientField folder to your PC for retraining.</string>
+    <string name="field_log_pick_label">Environment label</string>
+    <string name="field_log_record">Record 3s &amp; append to CSV</string>
+    <string name="field_log_ready">Pick a label and tap record.</string>
+    <string name="field_log_export_path">Export folder (USB / Files app):\n%1$s</string>
+    <string name="field_log_saved">Logged %1$s · wall time %2$d ms.%3$s</string>
+    <string name="field_log_no_light"> No light sensor — lux columns are 0.</string>
+    <string name="field_log_capture_fail">Capture failed: %1$s</string>
+    <string name="field_log_mic_denied">Microphone permission is required to log audio.</string>
+    <string name="field_log_toast_ok">Sample saved</string>
+</resources>
