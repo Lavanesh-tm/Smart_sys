@@ -213,7 +213,8 @@ def main() -> None:
             rows.append(
                 {
                     "label": label,
-                    "audio_path": os.path.join(out_root, rel_audio).replace("\\", "/"),
+                    # Relative to dataset.csv so training works on any machine (see load_dataset_from_csv).
+                    "audio_path": rel_audio,
                     "sr": SAMPLE_RATE_HZ,
                     "ax_mean": float(sens[0]),
                     "ay_mean": float(sens[1]),
